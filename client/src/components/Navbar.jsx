@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MagneticButton from './MagneticButton';
 
 export default function Navbar() {
     const [time, setTime] = useState('');
@@ -48,20 +49,28 @@ export default function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <div className="navbar__logo">PRERIT©</div>
+                <MagneticButton strength={0.2}>
+                    <div className="navbar__logo">PRERIT©</div>
+                </MagneticButton>
 
                 <ul className="navbar__links">
-                    <li><a href="#hero" onClick={(e) => scrollToSection(e, 'hero')}>Home</a></li>
-                    <li><a href="#works" onClick={(e) => scrollToSection(e, 'works')}>Works</a></li>
-                    <li><a href="#skills" onClick={(e) => scrollToSection(e, 'skills')}>Skills</a></li>
-                    <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a></li>
-                    <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
+                    {['hero', 'works', 'skills', 'about', 'contact'].map((id) => (
+                        <li key={id}>
+                            <MagneticButton strength={0.4}>
+                                <a href={`#${id}`} onClick={(e) => scrollToSection(e, id)}>
+                                    {id === 'hero' ? 'Home' : id.charAt(0).toUpperCase() + id.slice(1)}
+                                </a>
+                            </MagneticButton>
+                        </li>
+                    ))}
                 </ul>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <button className="theme-toggle" onClick={toggleTheme}>
-                        {theme === 'dark' ? '☀ Light' : '● Dark'}
-                    </button>
+                    <MagneticButton strength={0.3}>
+                        <button className="theme-toggle" onClick={toggleTheme}>
+                            {theme === 'dark' ? '☀ Light' : '● Dark'}
+                        </button>
+                    </MagneticButton>
                     <span className="navbar__clock">{time}</span>
                     <button
                         className={`hamburger ${menuOpen ? 'open' : ''}`}

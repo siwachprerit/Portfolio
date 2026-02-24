@@ -906,6 +906,93 @@ img {
   letter-spacing: 0.1em;
 }
 
+/* ============ PRELOADER ============ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.preloader__logo {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.preloader__line {
+  width: 120px;
+  height: 1px;
+  background: var(--text);
+  transform-origin: left;
+}
+
+.preloader__tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ============ BACK TO TOP ============ */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  z-index: 998;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s var(--transition);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ============ TECH GLOBE ============ */
+.tech-globe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-globe canvas {
+  max-width: 100%;
+}
+
 /* ============ CUSTOM CURSOR ============ */
 .custom-cursor {
   width: 12px;
