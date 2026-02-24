@@ -108,6 +108,75 @@
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
+/* Hero name gradient — override hardcoded white */
+[data-theme='light'] .hero__name {
+  background: linear-gradient(180deg,
+      rgba(17, 17, 17, 1) 0%,
+      rgba(17, 17, 17, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll indicator */
+[data-theme='light'] .hero__scroll-indicator span {
+  color: var(--text-dim);
+}
+
+[data-theme='light'] .hero__scroll-indicator .arrow {
+  background: linear-gradient(to bottom, var(--text-dim), transparent);
+}
+
+/* Section labels */
+[data-theme='light'] .section__label {
+  color: var(--text-dim);
+}
+
+/* About block headings */
+[data-theme='light'] .about__block h3 {
+  color: var(--text-dim);
+}
+
+/* Contact heading glow */
+[data-theme='light'] .contact__heading {
+  text-shadow: 0 0 80px rgba(60, 100, 255, 0.08);
+  color: var(--text);
+}
+
+/* Contact info labels */
+[data-theme='light'] .contact__info h4 {
+  color: var(--text-dim);
+}
+
+/* Service block number */
+[data-theme='light'] .service-block__number {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .service-block--orange .service-block__number,
+[data-theme='light'] .service-block--slate .service-block__number {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Scrollbar */
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+/* Project card bg */
+[data-theme='light'] .project-card {
+  background: var(--bg-elevated);
+}
+
+/* Selection */
+[data-theme='light'] ::selection {
+  background: rgba(60, 100, 255, 0.2);
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
