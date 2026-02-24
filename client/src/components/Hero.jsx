@@ -101,7 +101,7 @@ export default function Hero() {
             ))}
 
             <h1 className="hero__name" ref={nameRef}>PRERIT SIWACH</h1>
-            <p className="hero__title" ref={titleRef}>Full Stack Developer from India</p>
+            <p className="hero__title" ref={titleRef}>Full Stack Developer</p>
             <div className="hero__scroll-indicator">
                 <span>Scroll</span>
                 <div className="arrow"></div>

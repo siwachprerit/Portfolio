@@ -4,18 +4,6 @@ import MagneticButton from './MagneticButton';
 export default function Navbar() {
     const [time, setTime] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('theme') || 'dark';
-        }
-        return 'dark';
-    });
-
-    // Apply theme
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }, [theme]);
 
     // Live clock
     useEffect(() => {
@@ -42,10 +30,6 @@ export default function Navbar() {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const toggleTheme = () => {
-        setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-    };
-
     return (
         <>
             <nav className="navbar">
@@ -66,11 +50,6 @@ export default function Navbar() {
                 </ul>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <MagneticButton strength={0.3}>
-                        <button className="theme-toggle" onClick={toggleTheme}>
-                            {theme === 'dark' ? '☀ Light' : '● Dark'}
-                        </button>
-                    </MagneticButton>
                     <span className="navbar__clock">{time}</span>
                     <button
                         className={`hamburger ${menuOpen ? 'open' : ''}`}
@@ -91,9 +70,6 @@ export default function Navbar() {
                 <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')}>Skills</a>
                 <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a>
                 <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
-                <button className="theme-toggle" onClick={toggleTheme} style={{ marginTop: '20px' }}>
-                    {theme === 'dark' ? '☀ Switch to Light' : '● Switch to Dark'}
-                </button>
             </div>
         </>
     );

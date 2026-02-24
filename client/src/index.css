@@ -10,171 +10,19 @@
 }
 
 :root {
-  --bg: #000000;
-  --bg-elevated: #0a0a0a;
-  --text: #ffffff;
-  --text-muted: #888888;
-  --text-dim: #555555;
-  --glow-color: rgba(60, 100, 255, 0.12);
-  --glow-strong: rgba(60, 100, 255, 0.25);
-  --accent-orange: #C4652A;
-  --accent-beige: #D4C5A9;
-  --accent-slate: #2D3748;
+  /* ===== Premium Warm Light Palette ===== */
+  --bg: #FAFAF7;
+  --bg-elevated: #F0EDE8;
+  --text: #1a1a2e;
+  --text-muted: #5a5a6e;
+  --text-dim: #9a9aae;
+  --accent-orange: #D4644A;
+  --accent-beige: #3B7C6E;
+  --accent-slate: #2C2C3E;
+  --accent-purple: #6C47FF;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-smooth: cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-/* ============ LIGHT MODE ============ */
-[data-theme='light'] {
-  --bg: #f5f5f0;
-  --bg-elevated: #eaeae5;
-  --text: #111111;
-  --text-muted: #555555;
-  --text-dim: #999999;
-  --glow-color: rgba(60, 100, 255, 0.06);
-  --glow-strong: rgba(60, 100, 255, 0.12);
-  --accent-orange: #E8834A;
-  --accent-beige: #C4B599;
-  --accent-slate: #64748B;
-}
-
-[data-theme='light'] body::after {
-  box-shadow:
-    inset 0 0 120px 40px rgba(60, 100, 200, 0.06),
-    inset 0 0 300px 80px rgba(60, 100, 200, 0.03);
-}
-
-[data-theme='light'] .project-card__overlay {
-  background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.9) 100%);
-}
-
-[data-theme='light'] .project-card__title,
-[data-theme='light'] .project-card__links a {
-  color: var(--text);
-}
-
-[data-theme='light'] .project-card__tech span {
-  border-color: rgba(0, 0, 0, 0.15);
-  color: var(--text-muted);
-}
-
-[data-theme='light'] .service-block--orange,
-[data-theme='light'] .service-block--slate {
-  color: #fff;
-}
-
-[data-theme='light'] .service-block--orange .service-block__desc,
-[data-theme='light'] .service-block--slate .service-block__desc {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme='light'] .service-block--orange .service-block__skills span,
-[data-theme='light'] .service-block--slate .service-block__skills span {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
-}
-
-[data-theme='light'] .contact__form input,
-[data-theme='light'] .contact__form textarea {
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme='light'] .contact__form button {
-  background: var(--text);
-  color: var(--bg);
-}
-
-[data-theme='light'] .navbar {
-  background: rgba(245, 245, 240, 0.7);
-  border-bottom-color: rgba(0, 0, 0, 0.06);
-}
-
-[data-theme='light'] .custom-cursor {
-  background: var(--text);
-}
-
-[data-theme='light'] .marquee__item {
-  color: rgba(0, 0, 0, 0.06);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme='light'] .footer-bottom,
-[data-theme='light'] .marquee {
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-[data-theme='light'] .timeline__item {
-  border-bottom-color: rgba(0, 0, 0, 0.08);
-}
-
-/* Hero name gradient — override hardcoded white */
-[data-theme='light'] .hero__name {
-  background: linear-gradient(180deg,
-      rgba(17, 17, 17, 1) 0%,
-      rgba(17, 17, 17, 0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Scroll indicator */
-[data-theme='light'] .hero__scroll-indicator span {
-  color: var(--text-dim);
-}
-
-[data-theme='light'] .hero__scroll-indicator .arrow {
-  background: linear-gradient(to bottom, var(--text-dim), transparent);
-}
-
-/* Section labels */
-[data-theme='light'] .section__label {
-  color: var(--text-dim);
-}
-
-/* About block headings */
-[data-theme='light'] .about__block h3 {
-  color: var(--text-dim);
-}
-
-/* Contact heading glow */
-[data-theme='light'] .contact__heading {
-  text-shadow: 0 0 80px rgba(60, 100, 255, 0.08);
-  color: var(--text);
-}
-
-/* Contact info labels */
-[data-theme='light'] .contact__info h4 {
-  color: var(--text-dim);
-}
-
-/* Service block number */
-[data-theme='light'] .service-block__number {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='light'] .service-block--orange .service-block__number,
-[data-theme='light'] .service-block--slate .service-block__number {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* Scrollbar */
-[data-theme='light'] ::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-[data-theme='light'] ::-webkit-scrollbar-thumb {
-  background: #ccc;
-}
-
-/* Project card bg */
-[data-theme='light'] .project-card {
-  background: var(--bg-elevated);
-}
-
-/* Selection */
-[data-theme='light'] ::selection {
-  background: rgba(60, 100, 255, 0.2);
 }
 
 html {
@@ -185,26 +33,98 @@ html {
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   cursor: none;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ============ VIEWPORT GLOW ============ */
-body::after {
-  content: '';
+/* ===== Premium Grid & Animated Orbs Background ===== */
+.bg-mesh {
   position: fixed;
   inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background-color: #FAFAF7;
+  /* Base warm light */
   pointer-events: none;
-  z-index: 9999;
-  box-shadow:
-    inset 0 0 120px 40px rgba(20, 40, 120, 0.15),
-    inset 0 0 300px 80px rgba(30, 60, 180, 0.06);
-  border-radius: 0;
+}
+
+/* Subtle grid overlay */
+.bg-mesh__grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(26, 26, 46, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 46, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 10;
+}
+
+/* Animated gradient orbs */
+.bg-mesh__orb-1 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108, 71, 255, 0.15) 0%, transparent 60%);
+  animation: orb1 25s infinite ease-in-out alternate;
+}
+
+.bg-mesh__orb-2 {
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 100, 74, 0.12) 0%, transparent 60%);
+  animation: orb2 30s infinite ease-in-out alternate;
+}
+
+.bg-mesh__orb-3 {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 124, 110, 0.1) 0%, transparent 60%);
+  animation: orb3 20s infinite ease-in-out alternate;
+}
+
+@keyframes orb1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(20%, 20%) scale(1.2);
+  }
+}
+
+@keyframes orb2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-20%, -10%) scale(1.1);
+  }
+}
+
+@keyframes orb3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-30%, 30%) scale(1.3);
+  }
 }
 
 /* ============ SCROLLBAR ============ */
@@ -217,13 +137,13 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-dim);
+  background: #ccc;
   border-radius: 2px;
 }
 
 /* ============ SELECTION ============ */
 ::selection {
-  background: rgba(60, 100, 255, 0.3);
+  background: rgba(108, 71, 255, 0.15);
   color: var(--text);
 }
 
@@ -265,10 +185,10 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(250, 250, 247, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.06);
 }
 
 .navbar__logo {
@@ -343,8 +263,8 @@ img {
   line-height: 0.95;
   text-align: center;
   background: linear-gradient(180deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.7) 100%);
+      rgba(26, 26, 46, 1) 0%,
+      rgba(26, 26, 46, 0.55) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -423,7 +343,7 @@ img {
 .hero__scroll-indicator .arrow {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, var(--text), transparent);
+  background: linear-gradient(to bottom, var(--text-dim), transparent);
 }
 
 @keyframes float {
@@ -488,7 +408,7 @@ img {
   inset: 0;
   background: linear-gradient(180deg,
       transparent 40%,
-      rgba(0, 0, 0, 0.85) 100%);
+      rgba(250, 250, 247, 0.92) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -531,7 +451,7 @@ img {
 .project-card__tech span {
   font-size: 0.6rem;
   padding: 4px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(26, 26, 46, 0.12);
   border-radius: 50px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -549,7 +469,7 @@ img {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.15);
   padding-bottom: 2px;
   transition: border-color 0.3s;
 }
@@ -588,7 +508,7 @@ img {
 .service-block__number {
   font-size: 0.65rem;
   letter-spacing: 0.3em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(26, 26, 46, 0.25);
   margin-bottom: 24px;
 }
 
@@ -617,7 +537,7 @@ img {
 .service-block__skills span {
   font-size: 0.65rem;
   padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(26, 26, 46, 0.1);
   border-radius: 50px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -694,7 +614,7 @@ img {
 
 .about__block a {
   color: var(--text);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.15);
   transition: border-color 0.3s;
 }
 
@@ -732,7 +652,7 @@ img {
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.08);
 }
 
 .timeline__role {
@@ -759,8 +679,8 @@ img {
   overflow: hidden;
   white-space: nowrap;
   padding: 40px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(26, 26, 46, 0.06);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.06);
 }
 
 .marquee__track {
@@ -774,8 +694,8 @@ img {
   text-transform: uppercase;
   letter-spacing: -0.02em;
   padding: 0 40px;
-  color: rgba(255, 255, 255, 0.06);
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  color: rgba(26, 26, 46, 0.06);
+  -webkit-text-stroke: 1px rgba(26, 26, 46, 0.08);
 }
 
 @keyframes marquee {
@@ -803,7 +723,9 @@ img {
   letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 60px;
-  text-shadow: 0 0 80px rgba(60, 100, 255, 0.15);
+  text-shadow:
+    0 0 80px rgba(108, 71, 255, 0.08),
+    0 0 160px rgba(212, 100, 74, 0.04);
 }
 
 .contact__grid {
@@ -843,7 +765,7 @@ img {
 .contact__form input,
 .contact__form textarea {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(26, 26, 46, 0.08);
   border-radius: 4px;
   padding: 14px 18px;
   color: var(--text);
@@ -856,7 +778,7 @@ img {
 
 .contact__form input:focus,
 .contact__form textarea:focus {
-  border-color: rgba(60, 100, 255, 0.4);
+  border-color: rgba(139, 92, 246, 0.5);
 }
 
 .contact__form textarea {
@@ -900,7 +822,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(26, 26, 46, 0.06);
   font-size: 0.7rem;
   color: var(--text-dim);
   letter-spacing: 0.1em;
@@ -1030,7 +952,7 @@ img {
 /* ============ THEME TOGGLE ============ */
 .theme-toggle {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(26, 26, 46, 0.1);
   border-radius: 50px;
   padding: 6px 14px;
   color: var(--text-muted);

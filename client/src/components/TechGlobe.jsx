@@ -9,7 +9,7 @@ const techItems = [
     'Socket.IO', 'REST', 'Tailwind',
 ];
 
-function createTextTexture(text, isDark) {
+function createTextTexture(text) {
     const canvas = document.createElement('canvas');
     canvas.width = 256;
     canvas.height = 64;
@@ -19,7 +19,7 @@ function createTextTexture(text, isDark) {
     ctx.font = 'bold 22px Inter, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.85)' : 'rgba(17,17,17,0.85)';
+    ctx.fillStyle = 'rgba(26, 26, 46, 0.8)';
     ctx.fillText(text, 128, 32);
 
     const texture = new THREE.CanvasTexture(canvas);
@@ -29,7 +29,6 @@ function createTextTexture(text, isDark) {
 
 export default function TechGlobe() {
     const containerRef = useRef(null);
-    const sceneDataRef = useRef(null);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -37,7 +36,6 @@ export default function TechGlobe() {
 
         const width = container.clientWidth;
         const height = 500;
-        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
@@ -48,13 +46,13 @@ export default function TechGlobe() {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Wireframe globe
+        // Wireframe globe — subtle purple tint for warm light mode
         const sphereGeo = new THREE.SphereGeometry(2.2, 24, 24);
         const sphereMat = new THREE.MeshBasicMaterial({
-            color: isDark ? 0x3366ff : 0x6688cc,
+            color: 0x6C47FF,
             wireframe: true,
             transparent: true,
-            opacity: isDark ? 0.06 : 0.1,
+            opacity: 0.08,
         });
         const sphere = new THREE.Mesh(sphereGeo, sphereMat);
         scene.add(sphere);
@@ -67,7 +65,7 @@ export default function TechGlobe() {
             const phi = Math.acos(-1 + (2 * i) / techItems.length);
             const theta = Math.sqrt(techItems.length * Math.PI) * phi;
 
-            const texture = createTextTexture(text, isDark);
+            const texture = createTextTexture(text);
             const material = new THREE.SpriteMaterial({
                 map: texture,
                 transparent: true,
@@ -78,11 +76,9 @@ export default function TechGlobe() {
             sprite.scale.set(1.5, 0.4, 1);
             sprite.position.setFromSphericalCoords(radius, phi, theta);
 
-            sprites.push({ sprite, phi, theta, text, material });
+            sprites.push({ sprite, phi, theta });
             scene.add(sprite);
         });
-
-        sceneDataRef.current = { scene, camera, renderer, sphere, sprites, sphereMat };
 
         // Mouse interaction
         let mouseX = 0, mouseY = 0;
@@ -114,22 +110,6 @@ export default function TechGlobe() {
         };
         animate();
 
-        // Theme change observer
-        const observer = new MutationObserver(() => {
-            const nowDark = document.documentElement.getAttribute('data-theme') !== 'light';
-            sphereMat.color.set(nowDark ? 0x3366ff : 0x6688cc);
-            sphereMat.opacity = nowDark ? 0.06 : 0.1;
-
-            sprites.forEach(({ sprite, text }) => {
-                sprite.material.map?.dispose();
-                sprite.material.map = createTextTexture(text, nowDark);
-            });
-        });
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-theme'],
-        });
-
         // Resize
         const handleResize = () => {
             const newWidth = container.clientWidth;
@@ -141,7 +121,6 @@ export default function TechGlobe() {
 
         return () => {
             cancelAnimationFrame(frameId);
-            observer.disconnect();
             container.removeEventListener('mousemove', onMouseMove);
             window.removeEventListener('resize', handleResize);
             renderer.dispose();

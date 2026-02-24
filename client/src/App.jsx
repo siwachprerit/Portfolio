@@ -21,6 +21,13 @@ export default function App() {
       <Preloader onComplete={() => setLoaded(true)} />
       {loaded && (
         <>
+          <div className="bg-mesh">
+            <div className="bg-mesh__orb-1"></div>
+            <div className="bg-mesh__orb-2"></div>
+            <div className="bg-mesh__orb-3"></div>
+            <div className="bg-mesh__grid"></div>
+          </div>
+
           <CustomCursor />
           <Navbar />
           <main>
