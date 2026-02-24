@@ -85,7 +85,12 @@ button {
   cursor: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -184,11 +189,9 @@ img {
   letter-spacing: -0.03em;
   line-height: 0.95;
   text-align: center;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.7) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -208,35 +211,43 @@ img {
   z-index: 2;
 }
 
-.hero__parallax-img {
+/* Mouse trail images */
+.hero__trail-img {
   position: absolute;
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 1;
-  opacity: 0.4;
-  transition: opacity 0.5s var(--transition);
-}
-
-.hero__parallax-img:nth-child(1) {
-  top: 8%;
-  left: -2%;
-  width: 180px;
-  height: 250px;
-  transform: rotate(-8deg);
-}
-
-.hero__parallax-img:nth-child(2) {
-  bottom: 12%;
-  right: 3%;
   width: 160px;
-  height: 220px;
-  transform: rotate(5deg);
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  animation: trailFade 1.2s ease-out forwards;
 }
 
-.hero__parallax-img img {
+.hero__trail-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@keyframes trailFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6) rotate(var(--r, 0deg));
+  }
+
+  15% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1) rotate(var(--r, 0deg));
+  }
+
+  60% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95) rotate(var(--r, 0deg));
+  }
 }
 
 .hero__scroll-indicator {
@@ -263,8 +274,15 @@ img {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 /* ============ SECTION COMMON ============ */
@@ -315,11 +333,9 @@ img {
 .project-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 40%,
-    rgba(0, 0, 0, 0.85) 100%
-  );
+  background: linear-gradient(180deg,
+      transparent 40%,
+      rgba(0, 0, 0, 0.85) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -473,15 +489,23 @@ img {
   transform: scale(1.05);
 }
 
-.service-block--orange { background: var(--accent-orange); }
-.service-block--slate { background: var(--accent-slate); }
+.service-block--orange {
+  background: var(--accent-orange);
+}
+
+.service-block--slate {
+  background: var(--accent-slate);
+}
+
 .service-block--beige {
   background: var(--accent-beige);
   color: #1a1a1a;
 }
+
 .service-block--beige .service-block__desc {
   color: #444;
 }
+
 .service-block--beige .service-block__skills span {
   border-color: rgba(0, 0, 0, 0.2);
   color: #333;
@@ -517,7 +541,7 @@ img {
 
 .about__block a {
   color: var(--text);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transition: border-color 0.3s;
 }
 
@@ -602,8 +626,13 @@ img {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ============ CONTACT / FOOTER ============ */
