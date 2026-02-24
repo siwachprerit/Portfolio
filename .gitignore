@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Build
+dist/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+2026-02-24 21-39-54.mp4
