@@ -25,6 +25,89 @@
   --transition-smooth: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
+/* ============ LIGHT MODE ============ */
+[data-theme='light'] {
+  --bg: #f5f5f0;
+  --bg-elevated: #eaeae5;
+  --text: #111111;
+  --text-muted: #555555;
+  --text-dim: #999999;
+  --glow-color: rgba(60, 100, 255, 0.06);
+  --glow-strong: rgba(60, 100, 255, 0.12);
+  --accent-orange: #E8834A;
+  --accent-beige: #C4B599;
+  --accent-slate: #64748B;
+}
+
+[data-theme='light'] body::after {
+  box-shadow:
+    inset 0 0 120px 40px rgba(60, 100, 200, 0.06),
+    inset 0 0 300px 80px rgba(60, 100, 200, 0.03);
+}
+
+[data-theme='light'] .project-card__overlay {
+  background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+[data-theme='light'] .project-card__title,
+[data-theme='light'] .project-card__links a {
+  color: var(--text);
+}
+
+[data-theme='light'] .project-card__tech span {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--text-muted);
+}
+
+[data-theme='light'] .service-block--orange,
+[data-theme='light'] .service-block--slate {
+  color: #fff;
+}
+
+[data-theme='light'] .service-block--orange .service-block__desc,
+[data-theme='light'] .service-block--slate .service-block__desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] .service-block--orange .service-block__skills span,
+[data-theme='light'] .service-block--slate .service-block__skills span {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+[data-theme='light'] .contact__form input,
+[data-theme='light'] .contact__form textarea {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .contact__form button {
+  background: var(--text);
+  color: var(--bg);
+}
+
+[data-theme='light'] .navbar {
+  background: rgba(245, 245, 240, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .custom-cursor {
+  background: var(--text);
+}
+
+[data-theme='light'] .marquee__item {
+  color: rgba(0, 0, 0, 0.06);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .footer-bottom,
+[data-theme='light'] .marquee {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .timeline__item {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -39,6 +122,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   cursor: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ============ VIEWPORT GLOW ============ */
@@ -787,6 +871,102 @@ img {
 }
 
 /* ============ RESPONSIVE ============ */
+/* ============ THEME TOGGLE ============ */
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 6px 14px;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-toggle:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+[data-theme='light'] .theme-toggle {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .theme-toggle:hover {
+  border-color: var(--text);
+}
+
+/* ============ HAMBURGER MENU ============ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: none;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Mobile nav overlay */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.mobile-nav.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: opacity 0.3s;
+}
+
+.mobile-nav a:hover {
+  opacity: 0.6;
+}
+
+/* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
   .navbar {
     padding: 16px 24px;
@@ -821,23 +1001,118 @@ img {
 }
 
 @media (max-width: 768px) {
+
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+
   .navbar__links {
     display: none;
   }
 
-  .hero__name {
-    font-size: clamp(2.5rem, 12vw, 5rem);
-  }
-
-  .hero__parallax-img {
+  .navbar__clock {
     display: none;
   }
 
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .hero {
+    padding: 0 20px;
+  }
+
+  .hero__name {
+    font-size: clamp(2.2rem, 13vw, 4.5rem);
+  }
+
+  .hero__title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero__trail-img {
+    width: 100px;
+    height: 130px;
+  }
+
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 40px;
+  }
+
   .service-block__content {
-    padding: 40px 24px;
+    padding: 32px 20px;
+  }
+
+  .service-block__title {
+    font-size: 1.5rem;
+  }
+
+  .service-block__visual {
+    height: 220px;
+  }
+
+  .project-card {
+    aspect-ratio: 16/12;
   }
 
   .project-card__overlay {
     opacity: 1;
+  }
+
+  .project-card__title {
+    font-size: 1.1rem;
+  }
+
+  .about__image {
+    aspect-ratio: 1;
+  }
+
+  .contact__heading {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .marquee__item {
+    font-size: clamp(2rem, 8vw, 3rem);
+    padding: 0 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .theme-toggle {
+    font-size: 0.55rem;
+    padding: 5px 10px;
   }
 }
