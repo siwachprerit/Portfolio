@@ -9,7 +9,7 @@ const fallbackProjects = [
         title: 'CHAINXCHANGE',
         subtitle: 'Crypto Trading Platform',
         description: 'Full-stack MERN crypto trading platform with real-time market data, Redis caching, simulated trading, wallet management, and PnL tracking.',
-        image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
+        image: '/images/chainxchange.png',
         techStack: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Redis'],
         githubUrl: 'https://github.com/siwachprerit',
         liveUrl: '',
@@ -19,7 +19,7 @@ const fallbackProjects = [
         title: 'DRAFTED',
         subtitle: 'Blogging Platform',
         description: 'MERN blogging platform with JWT auth, Socket.IO real-time notifications, follow system, personalized feed, and Cloudinary image integration.',
-        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80',
+        image: '/images/drafted.png',
         techStack: ['React 19', 'Tailwind', 'Node.js', 'Socket.IO', 'MongoDB', 'Cloudinary'],
         githubUrl: 'https://github.com/siwachprerit',
         liveUrl: '',
@@ -29,7 +29,7 @@ const fallbackProjects = [
         title: 'GAME HUB',
         subtitle: 'Game Module',
         description: 'Modular gaming platform using Spring Boot microservices with REST APIs, OpenFeign inter-service communication, and Resilience4j circuit breaker.',
-        image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800',
         techStack: ['Java', 'Spring Boot', 'OpenFeign', 'Resilience4j', 'Maven'],
         githubUrl: 'https://github.com/siwachprerit',
         liveUrl: '',
@@ -58,7 +58,7 @@ export default function Works() {
             <div className="works-grid">
                 {projects.map((project, i) => (
                     <ScrollReveal key={project._id} delay={i * 0.15}>
-                        <div className="project-card">
+                        <div className="project-card" data-cursor="view">
                             <img
                                 className="project-card__image"
                                 src={project.image}

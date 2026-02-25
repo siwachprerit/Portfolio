@@ -1,6 +1,31 @@
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from './ScrollReveal';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function About() {
+    const containerRef = useRef(null);
+    const imageRef = useRef(null);
+
+    useEffect(() => {
+        // Parallax scroll effect for the image
+        const st = ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            animation: gsap.fromTo(
+                imageRef.current,
+                { yPercent: -15, scale: 1.15 },
+                { yPercent: 15, scale: 1.15, ease: 'none' }
+            ),
+            scrub: true,
+        });
+
+        return () => st.kill();
+    }, []);
+
     return (
         <section className="section" id="about">
             <ScrollReveal>
@@ -63,12 +88,21 @@ export default function About() {
 
                 <div className="about__right">
                     <ScrollReveal delay={0.2}>
-                        <img
-                            className="about__image"
-                            src="/images/prerit.jpg"
-                            alt="Prerit Siwach"
-                            loading="lazy"
-                        />
+                        <div className="about__image-frame">
+                            <div
+                                ref={containerRef}
+                                style={{ overflow: 'hidden', borderRadius: '10px', contain: 'paint' }}
+                            >
+                                <img
+                                    ref={imageRef}
+                                    className="about__image"
+                                    src="/images/prerit.jpg"
+                                    alt="Prerit Siwach"
+                                    loading="lazy"
+                                    style={{ transformOrigin: 'center center' }}
+                                />
+                            </div>
+                        </div>
                     </ScrollReveal>
                 </div>
             </div>

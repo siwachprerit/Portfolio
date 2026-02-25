@@ -33,7 +33,7 @@ export default function Preloader({ onComplete }) {
                             animate={{ y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            PRERIT©
+                            PRERIT
                         </motion.h1>
                         <motion.div
                             className="preloader__line"

@@ -34,7 +34,7 @@ export default function Navbar() {
         <>
             <nav className="navbar">
                 <MagneticButton strength={0.2}>
-                    <div className="navbar__logo">PRERIT©</div>
+                    <div className="navbar__logo">PRERIT</div>
                 </MagneticButton>
 
                 <ul className="navbar__links">

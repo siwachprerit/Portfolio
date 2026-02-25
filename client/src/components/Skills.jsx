@@ -1,4 +1,5 @@
 import ScrollReveal from './ScrollReveal';
+import Tilt from 'react-parallax-tilt';
 
 const services = [
     {
@@ -37,22 +38,33 @@ export default function Skills() {
             <div className="services">
                 {services.map((service, i) => (
                     <ScrollReveal key={service.number} delay={i * 0.1}>
-                        <div className={`service-block service-block--${service.color}`}
-                            style={{ direction: i % 2 === 1 ? 'rtl' : 'ltr' }}>
-                            <div className="service-block__content" style={{ direction: 'ltr' }}>
-                                <span className="service-block__number">{service.number}</span>
-                                <h3 className="service-block__title">{service.title}</h3>
-                                <p className="service-block__desc">{service.desc}</p>
-                                <div className="service-block__skills">
-                                    {service.skills.map((skill) => (
-                                        <span key={skill}>{skill}</span>
-                                    ))}
+                        <Tilt
+                            tiltMaxAngleX={4}
+                            tiltMaxAngleY={4}
+                            glareEnable={true}
+                            glareMaxOpacity={0.15}
+                            glareColor="#ffffff"
+                            glarePosition="all"
+                            scale={1.02}
+                            transitionSpeed={800}
+                        >
+                            <div className={`service-block service-block--${service.color}`}
+                                style={{ direction: i % 2 === 1 ? 'rtl' : 'ltr' }}>
+                                <div className="service-block__content" style={{ direction: 'ltr' }}>
+                                    <span className="service-block__number">{service.number}</span>
+                                    <h3 className="service-block__title">{service.title}</h3>
+                                    <p className="service-block__desc">{service.desc}</p>
+                                    <div className="service-block__skills">
+                                        {service.skills.map((skill) => (
+                                            <span key={skill}>{skill}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="service-block__visual">
+                                    <img src={service.image} alt={service.title} loading="lazy" />
                                 </div>
                             </div>
-                            <div className="service-block__visual">
-                                <img src={service.image} alt={service.title} loading="lazy" />
-                            </div>
-                        </div>
+                        </Tilt>
                     </ScrollReveal>
                 ))}
             </div>

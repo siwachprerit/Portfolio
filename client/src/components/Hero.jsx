@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { gsap } from 'gsap';
+import { useRef, useState, useCallback } from 'react';
 
 const trailImages = [
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300&q=75',
@@ -16,26 +15,10 @@ const trailImages = [
 
 export default function Hero() {
     const heroRef = useRef(null);
-    const nameRef = useRef(null);
-    const titleRef = useRef(null);
     const [images, setImages] = useState([]);
     const imgIndexRef = useRef(0);
     const lastSpawnRef = useRef(0);
     const idCounterRef = useRef(0);
-
-    useEffect(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-        tl.fromTo(nameRef.current,
-            { opacity: 0, y: 60, filter: 'blur(15px)' },
-            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2 }
-        )
-            .fromTo(titleRef.current,
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.8 },
-                '-=0.5'
-            );
-    }, []);
 
     const spawnImage = useCallback((x, y) => {
         const now = Date.now();
@@ -100,8 +83,14 @@ export default function Hero() {
                 </div>
             ))}
 
-            <h1 className="hero__name" ref={nameRef}>PRERIT SIWACH</h1>
-            <p className="hero__title" ref={titleRef}>Full Stack Developer</p>
+            <h1 className="hero__name">
+                {"PRERIT SIWACH".split('').map((char, index) => (
+                    <span key={index} className="char" style={{ animationDelay: `${index * 0.04}s` }}>
+                        {char === ' ' ? '\u00A0' : char}
+                    </span>
+                ))}
+            </h1>
+            <p className="hero__title">Full Stack Developer</p>
             <div className="hero__scroll-indicator">
                 <span>Scroll</span>
                 <div className="arrow"></div>
