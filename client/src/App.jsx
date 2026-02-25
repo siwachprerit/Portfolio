@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
+import ScrollProgress from './components/ScrollProgress';
+import MouseSpotlight from './components/MouseSpotlight';
 import Hero from './components/Hero';
 import Works from './components/Works';
 import Skills from './components/Skills';
@@ -30,6 +32,8 @@ export default function App() {
 
           <CustomCursor />
           <Navbar />
+          <ScrollProgress />
+          <MouseSpotlight />
           <main>
             <Hero />
             <Marquee />

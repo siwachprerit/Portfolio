@@ -23,6 +23,7 @@ export default function Contact() {
 
     return (
         <section className="section contact" id="contact">
+            <span className="section__bg-text">Contact</span>
             <ScrollReveal blur={true}>
                 <h2 className="contact__heading">GET IN<br />TOUCH</h2>
             </ScrollReveal>

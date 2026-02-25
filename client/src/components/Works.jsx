@@ -51,13 +51,14 @@ export default function Works() {
 
     return (
         <section className="section" id="works">
+            <span className="section__bg-text">Works</span>
             <ScrollReveal>
                 <span className="section__label">Selected Works</span>
                 <h2 className="section__title">Projects</h2>
             </ScrollReveal>
             <div className="works-grid">
                 {projects.map((project, i) => (
-                    <ScrollReveal key={project._id} delay={i * 0.15}>
+                    <ScrollReveal key={project._id} delay={i * 0.15} direction={i % 2 === 0 ? 'left' : 'right'}>
                         <div className="project-card" data-cursor="view">
                             <img
                                 className="project-card__image"
