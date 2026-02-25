@@ -694,8 +694,8 @@ img {
   text-transform: uppercase;
   letter-spacing: -0.02em;
   padding: 0 40px;
-  color: rgba(26, 26, 46, 0.06);
-  -webkit-text-stroke: 1px rgba(26, 26, 46, 0.08);
+  color: rgba(26, 26, 46, 0.15);
+  -webkit-text-stroke: 1px rgba(26, 26, 46, 0.25);
 }
 
 @keyframes marquee {
