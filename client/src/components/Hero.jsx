@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 
 const trailImages = [
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300&q=75',
@@ -19,6 +19,41 @@ export default function Hero() {
     const imgIndexRef = useRef(0);
     const lastSpawnRef = useRef(0);
     const idCounterRef = useRef(0);
+
+    // Typewriter for name then subtitle
+    useEffect(() => {
+        const nameEl = document.getElementById('hero-name');
+        const subtitleEl = document.getElementById('typewriter');
+        if (!nameEl || !subtitleEl) return;
+
+        const name = 'PRERIT SIWACH';
+        const subtitle = 'Full Stack Developer';
+        let nameI = 0;
+        nameEl.textContent = '';
+        subtitleEl.textContent = '';
+
+        const nameTimer = setTimeout(() => {
+            const nameInterval = setInterval(() => {
+                nameEl.textContent = name.slice(0, nameI + 1);
+                nameI++;
+                if (nameI >= name.length) {
+                    clearInterval(nameInterval);
+                    // Type subtitle after name finishes
+                    let subI = 0;
+                    const subInterval = setInterval(() => {
+                        subtitleEl.textContent = subtitle.slice(0, subI + 1);
+                        subI++;
+                        if (subI >= subtitle.length) clearInterval(subInterval);
+                    }, 60);
+                }
+            }, 45);
+            return () => clearInterval(nameInterval);
+        }, 200);
+
+        return () => clearTimeout(nameTimer);
+    }, []);
+
+
 
     const spawnImage = useCallback((x, y) => {
         const now = Date.now();
@@ -84,13 +119,13 @@ export default function Hero() {
             ))}
 
             <h1 className="hero__name">
-                {"PRERIT SIWACH".split('').map((char, index) => (
-                    <span key={index} className="char" style={{ animationDelay: `${index * 0.04}s` }}>
-                        {char === ' ' ? '\u00A0' : char}
-                    </span>
-                ))}
+                <span id="hero-name"></span>
+                <span className="hero__cursor hero__cursor--name">|</span>
             </h1>
-            <p className="hero__title">Full Stack Developer</p>
+            <p className="hero__title">
+                <span className="hero__typewriter" id="typewriter"></span>
+                <span className="hero__cursor">|</span>
+            </p>
             <div className="hero__scroll-indicator">
                 <span>Scroll</span>
                 <div className="arrow"></div>

@@ -79,10 +79,6 @@ export default function Contact() {
                 </div>
             </div>
 
-            <div className="footer-bottom">
-                <span>© 2026 PRERIT SIWACH</span>
-                <span>DESIGNED & BUILT WITH ♥</span>
-            </div>
         </section>
     );
 }

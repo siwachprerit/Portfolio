@@ -40,16 +40,20 @@ export default function Skills() {
         const track = trackRef.current;
         const container = containerRef.current;
 
+        // Calculate how much the track needs to move
+        // Add extra buffer (container.offsetWidth * 0.5) to ensure last card fully enters
         const totalScroll = track.scrollWidth - container.offsetWidth;
+        const extra = container.offsetWidth * 0.2; // extra breathing room for last card
 
         const st = gsap.to(track, {
-            x: -totalScroll,
+            x: -(totalScroll),
             ease: 'none',
             scrollTrigger: {
                 trigger: container,
                 pin: true,
-                scrub: 1,
-                end: () => `+=${totalScroll}`,
+                scrub: 1.5,
+                start: 'top top+=62', // account for navbar height
+                end: () => `+=${totalScroll + extra}`,
                 invalidateOnRefresh: true,
             },
         });
@@ -82,9 +86,26 @@ export default function Skills() {
                             <h3 className="skill-card__title">{service.title}</h3>
                             <p className="skill-card__desc">{service.desc}</p>
                             <div className="skill-card__tags">
-                                {service.skills.map((skill) => (
-                                    <span key={skill}>{skill}</span>
-                                ))}
+                                {service.skills.map((skill) => {
+                                    const t = skill.toLowerCase();
+                                    let cls = '';
+                                    if (t.includes('react')) cls = 'react';
+                                    else if (t.includes('vite')) cls = 'vite';
+                                    else if (t.includes('tailwind')) cls = 'tailwind';
+                                    else if (t.includes('gsap') || t.includes('framer')) cls = 'gsap';
+                                    else if (t.includes('node')) cls = 'node';
+                                    else if (t.includes('express')) cls = 'express';
+                                    else if (t.includes('java') && !t.includes('javascript')) cls = 'java';
+                                    else if (t.includes('spring')) cls = 'spring';
+                                    else if (t.includes('socket')) cls = 'node';
+                                    else if (t.includes('mongo')) cls = 'mongo';
+                                    else if (t.includes('redis')) cls = 'redis';
+                                    else if (t.includes('docker')) cls = 'docker';
+                                    else if (t.includes('aws') || t.includes('ec2') || t.includes('s3')) cls = 'aws';
+                                    return (
+                                        <span key={skill} className={`tech-tag${cls ? ` tech-tag--${cls}` : ''}`}>{skill}</span>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>

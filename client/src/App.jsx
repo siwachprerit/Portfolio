@@ -12,6 +12,7 @@ import TechGlobe from './components/TechGlobe';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
 import BackToTop from './components/BackToTop';
+import Footer from './components/Footer';
 import useLenis from './hooks/useLenis';
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
             <Marquee />
             <Contact />
           </main>
+          <Footer />
           <BackToTop />
         </>
       )}

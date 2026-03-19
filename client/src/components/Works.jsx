@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ScrollReveal from './ScrollReveal';
+import ScrambleText from './ScrambleText';
 import { getProjects } from '../api';
 
 // Fallback projects if API is not available
@@ -36,8 +37,28 @@ const fallbackProjects = [
     },
 ];
 
+// Map tech names to their CSS class suffix
+function getTechClass(tech) {
+    const t = tech.toLowerCase();
+    if (t.includes('react')) return 'react';
+    if (t.includes('vite')) return 'vite';
+    if (t.includes('node')) return 'node';
+    if (t.includes('express')) return 'express';
+    if (t.includes('java') && !t.includes('javascript')) return 'java';
+    if (t.includes('spring')) return 'spring';
+    if (t.includes('mongo')) return 'mongo';
+    if (t.includes('redis')) return 'redis';
+    if (t.includes('docker')) return 'docker';
+    if (t.includes('aws') || t.includes('ec2') || t.includes('s3')) return 'aws';
+    if (t.includes('tailwind')) return 'tailwind';
+    if (t.includes('gsap')) return 'gsap';
+    if (t.includes('framer')) return 'framer';
+    return '';
+}
+
 export default function Works() {
     const [projects, setProjects] = useState(fallbackProjects);
+    const [titleVisible, setTitleVisible] = useState(false);
 
     useEffect(() => {
         getProjects()
@@ -52,9 +73,11 @@ export default function Works() {
     return (
         <section className="section" id="works">
             <span className="section__bg-text">Works</span>
-            <ScrollReveal>
+            <ScrollReveal onReveal={() => setTitleVisible(true)}>
                 <span className="section__label">Selected Works</span>
-                <h2 className="section__title">Projects</h2>
+                <h2 className="section__title">
+                    <ScrambleText text="Projects" trigger={titleVisible} className="scramble" />
+                </h2>
             </ScrollReveal>
             <div className="works-grid">
                 {projects.map((project, i) => (
@@ -71,7 +94,7 @@ export default function Works() {
                                 <p className="project-card__subtitle">{project.subtitle}</p>
                                 <div className="project-card__tech">
                                     {project.techStack?.map((tech) => (
-                                        <span key={tech}>{tech}</span>
+                                        <span key={tech} className={`tech-tag tech-tag--${getTechClass(tech)}`}>{tech}</span>
                                     ))}
                                 </div>
                                 <div className="project-card__links">
@@ -90,3 +113,4 @@ export default function Works() {
         </section>
     );
 }
+

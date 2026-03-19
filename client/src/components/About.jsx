@@ -44,25 +44,6 @@ function StatCounter({ end, suffix = '', label, decimals = 0 }) {
 }
 
 export default function About() {
-    const photoContainerRef = useRef(null);
-    const photoRef = useRef(null);
-
-    useEffect(() => {
-        const st = ScrollTrigger.create({
-            trigger: photoContainerRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            animation: gsap.fromTo(
-                photoRef.current,
-                { yPercent: -10, scale: 1.15 },
-                { yPercent: 10, scale: 1.15, ease: 'none' }
-            ),
-            scrub: true,
-        });
-
-        return () => st.kill();
-    }, []);
-
     return (
         <section className="section" id="about">
             <span className="section__bg-text">About</span>
@@ -72,23 +53,8 @@ export default function About() {
             </ScrollReveal>
 
             <div className="bento">
-                {/* Row 1: Photo + Bio */}
-                <ScrollReveal direction="left" className="bento__card bento__card--photo">
-                    <div
-                        ref={photoContainerRef}
-                        className="bento__photo-wrap"
-                    >
-                        <img
-                            ref={photoRef}
-                            src="/images/prerit.jpg"
-                            alt="Prerit Siwach"
-                            loading="lazy"
-                            style={{ transformOrigin: 'center center' }}
-                        />
-                    </div>
-                </ScrollReveal>
-
-                <ScrollReveal direction="right" delay={0.1} className="bento__card bento__card--bio">
+                {/* Row 1: Bio — full width */}
+                <ScrollReveal direction="up" className="bento__card bento__card--bio bento__card--full">
                     <h3>Who I Am</h3>
                     <p>
                         I'm Prerit Siwach, a 3rd-year Computer Science undergraduate at Chitkara University
@@ -104,10 +70,9 @@ export default function About() {
                 </ScrollReveal>
 
                 {/* Row 2: Stats */}
-                <ScrollReveal delay={0.15} className="bento__card bento__card--stats">
+                <ScrollReveal delay={0.15} className="bento__card bento__card--stats bento__card--full">
                     <StatCounter end={3} suffix="+" label="Projects Built" />
-                    <StatCounter end={8.42} suffix="" label="CGPA" decimals={2} />
-                    <StatCounter end={1} suffix="+" label="Year Experience" />
+                    <StatCounter end={8.53} suffix="" label="CGPA" decimals={2} />
                     <StatCounter end={10} suffix="+" label="Technologies" />
                 </ScrollReveal>
 
