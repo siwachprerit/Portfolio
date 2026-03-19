@@ -11,8 +11,8 @@ export default function Footer() {
                     Let's Build<br />
                     <span>Something Great</span>
                 </h2>
-                <a href="mailto:prerit2261.be23@chitkara.edu.in" className="footer__email">
-                    prerit2261.be23@chitkara.edu.in ↗
+                <a href="mailto:preritsiwach1@gmail.com" className="footer__email">
+                    preritsiwach1@gmail.com ↗
                 </a>
 
                 <div className="footer__social">

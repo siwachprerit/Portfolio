@@ -41,7 +41,7 @@ export default function Contact() {
                 <div className="contact__info">
                     <ScrollReveal delay={0.15}>
                         <h4>Email & Socials</h4>
-                        <a href="mailto:prerit2261.be23@chitkara.edu.in">prerit2261.be23@chitkara.edu.in</a>
+                        <a href="mailto:preritsiwach1@gmail.com">preritsiwach1@gmail.com</a>
                         <a href="https://linkedin.com/in/preritsiwach" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
                         <a href="https://github.com/siwachprerit" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                     </ScrollReveal>
